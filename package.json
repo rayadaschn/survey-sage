@@ -47,6 +47,7 @@
     "husky": "^8.0.3",
     "less": "^4.2.0",
     "lint-staged": "^14.0.1",
+    "postcss-preset-env": "^9.1.4",
     "prettier": "^3.0.3",
     "rollup-plugin-visualizer": "^5.9.2",
     "terser": "^5.20.0",

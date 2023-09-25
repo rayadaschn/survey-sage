@@ -2,6 +2,7 @@ import react from '@vitejs/plugin-react'
 import legacy from '@vitejs/plugin-legacy'
 import { createHtmlPlugin } from 'vite-plugin-html'
 import { visualizer } from 'rollup-plugin-visualizer'
+import postcssPresetEnv from 'postcss-preset-env'
 
 import { defineConfig, loadEnv } from 'vite'
 
@@ -53,6 +54,18 @@ export default defineConfig(({ mode }) => {
       alias: {
         '@': sourceDir,
       },
+    },
+
+    /** CSS */
+    css: {
+      modules: {
+        // generateScopedName: '[path][name]__[local]__[hash:5]',
+        // localsConvention: 'camelCaseOnly',
+      },
+      postcss: {
+        plugins: [postcssPresetEnv()],
+      },
+      less: {},
     },
 
     plugins: [

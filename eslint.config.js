@@ -7,6 +7,7 @@ import react from 'eslint-plugin-react'
 import reactHooks from 'eslint-plugin-react-hooks'
 import jsxA11y from 'eslint-plugin-jsx-a11y'
 
+// https://github.com/chengpeiquan/bassist/blob/main/packages/eslint/src/constants.ts
 const GLOB_EXCLUDE = [
   '**/node_modules',
   '**/dist',

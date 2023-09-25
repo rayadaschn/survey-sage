@@ -1,16 +1,12 @@
 import './App.css'
+import List from './pages/List'
 
 // import React, { useState } from 'react'
 
 const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <p className="header">
-          🚀 Vite + React + Typescript 🤘 & <br />
-          Eslint 🔥+ Prettier
-        </p>
-      </header>
+      <List />
     </div>
   )
 }
