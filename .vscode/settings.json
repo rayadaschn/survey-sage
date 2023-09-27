@@ -1,7 +1,11 @@
 {
   "cSpell.words": [
+    "antd",
+    "Attributify",
     "devapi",
-    "Vite",
+    "unocss",
+    "unplugin",
+    "Vite"
   ],
   "eslint.experimental.useFlatConfig": true
 }

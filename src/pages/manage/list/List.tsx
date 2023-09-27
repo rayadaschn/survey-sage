@@ -2,6 +2,7 @@ import React, { FC, useState } from 'react'
 // import QuestionCard from '@/components/QuestionCard'
 import styles from './List.module.less'
 import QuestionCard from '@/components/QuestionCard'
+import { useSearchParams } from 'react-router-dom'
 
 const rawQuestionList = [
   {
@@ -39,7 +40,10 @@ const rawQuestionList = [
 ]
 
 const List: FC = () => {
+  const [searchParams] = useSearchParams()
   const [questionList, setQuestionList] = useState(rawQuestionList)
+  console.log('searchParams', searchParams.get('keyword'))
+
   return (
     <>
       <div className={styles.header}>

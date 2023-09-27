@@ -2,6 +2,8 @@ import react from '@vitejs/plugin-react'
 import legacy from '@vitejs/plugin-legacy'
 import { createHtmlPlugin } from 'vite-plugin-html'
 import { visualizer } from 'rollup-plugin-visualizer'
+import autoImport from 'unplugin-auto-import/vite'
+import unocss from 'unocss/vite'
 import postcssPresetEnv from 'postcss-preset-env'
 
 import { defineConfig, loadEnv } from 'vite'
@@ -13,9 +15,7 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, envDir)
 
   return {
-    /**
-     * 管理环境变量的配置文件存放目录
-     */
+    /** 管理环境变量的配置文件存放目录 */
     envDir,
 
     /**
@@ -24,6 +24,25 @@ export default defineConfig(({ mode }) => {
      * @description 见项目根目录下的 `config` 文件夹说明
      */
     base: env.VITE_DEPLOY_BASE_URL,
+
+    /** 配置别名 */
+    resolve: {
+      alias: {
+        '@': sourceDir,
+      },
+    },
+
+    /** CSS */
+    css: {
+      modules: {
+        // generateScopedName: '[path][name]__[local]__[hash:5]',
+        // localsConvention: 'camelCaseOnly',
+      },
+      postcss: {
+        plugins: [postcssPresetEnv()],
+      },
+      less: {},
+    },
 
     /** 打包优化 */
     build: {
@@ -49,26 +68,9 @@ export default defineConfig(({ mode }) => {
       chunkSizeWarningLimit: 600,
     },
 
-    /** 配置别名 */
-    resolve: {
-      alias: {
-        '@': sourceDir,
-      },
-    },
-
-    /** CSS */
-    css: {
-      modules: {
-        // generateScopedName: '[path][name]__[local]__[hash:5]',
-        // localsConvention: 'camelCaseOnly',
-      },
-      postcss: {
-        plugins: [postcssPresetEnv()],
-      },
-      less: {},
-    },
-
     plugins: [
+      /** 基础插件 */
+      unocss(),
       react(),
 
       legacy({
@@ -76,8 +78,21 @@ export default defineConfig(({ mode }) => {
       }),
 
       /**
-       * 为入口文件增加 EJS 模版能力
+       * 自动导入 API ，不用每次都 import
+       *
+       * @tips 如果直接使用没导入的 API 依然提示报错，请重启 VS Code
        */
+      autoImport({
+        imports: ['react', 'react-router-dom'],
+        dts: 'src/types/declaration-files/auto-import.d.ts',
+        eslintrc: {
+          enabled: true,
+          filepath: './.eslintrc-auto-import.json',
+          globalsPropValue: true,
+        },
+      }),
+
+      /** 为入口文件增加 EJS 模版能力 */
       createHtmlPlugin({
         minify: true,
         inject: {
@@ -89,9 +104,7 @@ export default defineConfig(({ mode }) => {
         },
       }),
 
-      /**
-       * 打包分析
-       */
+      /** 打包分析 */
       visualizer(),
     ],
   }

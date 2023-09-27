@@ -4,6 +4,7 @@ import { defineFlatConfig } from 'eslint-define-config'
 import prettierPlugin from 'eslint-plugin-prettier'
 import prettierConfig from 'eslint-config-prettier'
 import react from 'eslint-plugin-react'
+import typescriptParser from '@typescript-eslint/parser'
 import reactHooks from 'eslint-plugin-react-hooks'
 import jsxA11y from 'eslint-plugin-jsx-a11y'
 
@@ -58,7 +59,7 @@ export default defineFlatConfig([
     },
     languageOptions: {
       ecmaVersion: 'latest',
-      parser: '@typescript-eslint/parser',
+      parser: typescriptParser,
       parserOptions: {
         sourceType: 'module',
         ecmaFeatures: {

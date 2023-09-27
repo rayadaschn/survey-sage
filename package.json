@@ -25,8 +25,11 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.2.6",
+    "antd": "^5.9.3",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.16.0"
   },
   "devDependencies": {
     "@types/node": "^20.6.4",
@@ -34,6 +37,8 @@
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.7.2",
     "@typescript-eslint/parser": "^6.7.2",
+    "@unocss/preset-rem-to-px": "^0.56.4",
+    "@unocss/transformer-attributify-jsx": "^0.56.4",
     "@vitejs/plugin-legacy": "^4.1.1",
     "@vitejs/plugin-react": "^4.0.4",
     "eslint": "^8.50.0",
@@ -47,11 +52,14 @@
     "husky": "^8.0.3",
     "less": "^4.2.0",
     "lint-staged": "^14.0.1",
+    "postcss": "^8.4",
     "postcss-preset-env": "^9.1.4",
     "prettier": "^3.0.3",
     "rollup-plugin-visualizer": "^5.9.2",
     "terser": "^5.20.0",
     "typescript": "^5.2.2",
+    "unocss": "^0.56.4",
+    "unplugin-auto-import": "^0.16.6",
     "vite": "^4.4.9",
     "vite-plugin-html": "^3.2.0"
   },

@@ -1,13 +1,18 @@
-import './App.css'
-import List from './pages/List'
+import { RouterProvider } from 'react-router-dom'
+import router from './router'
 
-// import React, { useState } from 'react'
+import { ConfigProvider, theme } from 'antd'
 
 const App = () => {
   return (
-    <div className="App">
-      <List />
-    </div>
+    <ConfigProvider
+      theme={{
+        // algorithm: theme.darkAlgorithm,
+        algorithm: theme.defaultAlgorithm,
+      }}
+    >
+      <RouterProvider router={router} />
+    </ConfigProvider>
   )
 }
 
