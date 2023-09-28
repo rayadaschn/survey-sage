@@ -7,5 +7,10 @@
     "unplugin",
     "Vite"
   ],
-  "eslint.experimental.useFlatConfig": true
+  // Enable the flat config support
+  "eslint.experimental.useFlatConfig": true,
+  // Auto fix
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+  },
 }

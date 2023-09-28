@@ -7,6 +7,7 @@ import react from 'eslint-plugin-react'
 import typescriptParser from '@typescript-eslint/parser'
 import reactHooks from 'eslint-plugin-react-hooks'
 import jsxA11y from 'eslint-plugin-jsx-a11y'
+import unocssPlugin from '@unocss/eslint-plugin'
 
 // https://github.com/chengpeiquan/bassist/blob/main/packages/eslint/src/constants.ts
 const GLOB_EXCLUDE = [
@@ -50,6 +51,7 @@ export default defineFlatConfig([
     },
     ignores: [...GLOB_EXCLUDE],
   },
+
   {
     files: ['**/*.jsx', '**/*.tsx', '**/*.js', '**/*.ts'],
     settings: {
@@ -138,10 +140,8 @@ export default defineFlatConfig([
       ],
       'react/style-prop-object': 'error',
       'react/void-dom-elements-no-children': 'error',
-
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'error',
-
       'jsx-a11y/alt-text': 'error',
       'jsx-a11y/anchor-has-content': 'error',
       'jsx-a11y/anchor-is-valid': 'error',
@@ -157,9 +157,18 @@ export default defineFlatConfig([
   },
 
   {
+    plugins: {
+      '@unocss': unocssPlugin,
+    },
+    rules: {
+      ...unocssPlugin.configs.recommended.rules,
+    },
+  },
+
+  {
     rules: {
       // By default, this rule is `off`
-      // 'vue/component-tags-order': 'error',
+      'react/jsx-no-undef': 'off',
     },
     ignores: ['dist'],
   },

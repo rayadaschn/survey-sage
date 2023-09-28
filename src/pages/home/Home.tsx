@@ -9,7 +9,7 @@ const Home: FC = () => {
   const nav = useNavigate()
 
   return (
-    <div className="flex flex-col justify-center items-center h-150">
+    <div className="h-150 flex flex-col items-center justify-center">
       <div className="text-center">
         <Title>问卷调查 | 在线投票</Title>
         <Paragraph>
