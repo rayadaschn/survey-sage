@@ -23,7 +23,7 @@ jobs:
         with:
           fetch-depth: 0
           repo-token: ${{ secrets.DEPLOY_TOKEN }}
-          # 如果你文档需要 Git 子模块，取消注释下一行
+          # 如果需要 Git 子模块，取消注释下一行
           # submodules: true
 
       - name: 设置 Node.js
@@ -40,13 +40,13 @@ jobs:
           NODE_OPTIONS: --max_old_space_size=8192
         run: |-
           npm run build
-          > build/.nojekyll
+          > dist/.nojekyll
 
       - name: 部署网站
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           #  文档部署到的分支名称
           GITHUB_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: build/
+          BRANCH: gh-pages # The branch the action should deploy to.
+          FOLDER: dist/
           CLEAN: true
