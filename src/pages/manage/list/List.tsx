@@ -3,13 +3,15 @@ import React, { FC, useState } from 'react'
 import styles from './List.module.less'
 import QuestionCard from '@/components/QuestionCard'
 import { useSearchParams } from 'react-router-dom'
+import { Typography } from 'antd'
 
+const { Title } = Typography
 const rawQuestionList = [
   {
     id: 'q1',
     title: '问卷 1',
     isPublished: false,
-    isStart: false,
+    isStar: false,
     answerContent: 9,
     currentAt: '1 月 1 日 12:45',
   },
@@ -17,7 +19,7 @@ const rawQuestionList = [
     id: 'q2',
     title: '问卷 2',
     isPublished: true,
-    isStart: false,
+    isStar: false,
     answerContent: 3,
     currentAt: '2 月 1 日 12:45',
   },
@@ -25,7 +27,7 @@ const rawQuestionList = [
     id: 'q3',
     title: '问卷 3',
     isPublished: false,
-    isStart: true,
+    isStar: true,
     answerContent: 1,
     currentAt: '3 月 1 日 12:45',
   },
@@ -33,7 +35,7 @@ const rawQuestionList = [
     id: 'q4',
     title: '问卷 4',
     isPublished: true,
-    isStart: true,
+    isStar: true,
     answerContent: 6,
     currentAt: '4 月 1 日 12:45',
   },
@@ -48,7 +50,7 @@ const List: FC = () => {
     <>
       <div className={styles.header}>
         <div className={styles.left}>
-          <h3>我的问卷</h3>
+          <Title level={3}>我的问卷</Title>
         </div>
         <div className={styles.right}>(搜索)</div>
       </div>

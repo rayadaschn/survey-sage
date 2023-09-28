@@ -122,7 +122,6 @@ export default defineFlatConfig([
       'react/jsx-no-duplicate-props': 'error',
       'react/jsx-no-target-blank': 'error',
       'react/jsx-no-undef': 'error',
-      'react/jsx-no-useless-fragment': 'error',
       'react/jsx-pascal-case': 'error',
       'react/jsx-tag-spacing': 'error',
       'react/jsx-uses-vars': 'error',

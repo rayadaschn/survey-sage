@@ -28,6 +28,9 @@
       "ESNext",
       "DOM",
       "DOM.Iterable"
+    ],
+    "types": [
+      "src/types/declaration-files"
     ]
   },
   "include": [
