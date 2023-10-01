@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react'
 // import QuestionCard from '@/components/QuestionCard'
 import styles from './List.module.less'
 import QuestionCard from '@/components/QuestionCard'
-import { useSearchParams } from 'react-router-dom'
+// import { useSearchParams } from 'react-router-dom'
 import { Typography } from 'antd'
 
 const { Title } = Typography
@@ -42,9 +42,8 @@ const rawQuestionList = [
 ]
 
 const List: FC = () => {
-  const [searchParams] = useSearchParams()
+  // const [searchParams] = useSearchParams()
   const [questionList, setQuestionList] = useState(rawQuestionList)
-  console.log('searchParams', searchParams.get('keyword'))
 
   return (
     <>

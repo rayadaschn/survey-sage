@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import styles from './Star.module.less'
 import QuestionCard from '@/components/QuestionCard'
-import { useSearchParams } from 'react-router-dom'
+// import { useSearchParams } from 'react-router-dom'
 import { Empty, Typography } from 'antd'
 
 const { Title } = Typography
@@ -26,7 +26,7 @@ const rawQuestionList = [
 ]
 
 const Star: FC = () => {
-  const [questionList, setQuestionList] = useState(rawQuestionList)
+  const [questionList] = useState(rawQuestionList)
   return (
     <>
       <div className={styles.header}>
