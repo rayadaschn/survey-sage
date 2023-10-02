@@ -16,7 +16,7 @@ import Login from '@/pages/login/Login'
 
 const router = createBrowserRouter([
   {
-    path: '/survey-sage/',
+    path: '/',
     element: <MainLayout />,
     children: [
       {
