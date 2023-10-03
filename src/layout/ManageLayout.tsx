@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { Outlet } from 'react-router-dom'
-import { Button, Space, Divider } from 'antd'
+import { Button, Space, Divider, message } from 'antd'
 import styles from './ManageLayout.module.less'
 import {
   BarsOutlined,
@@ -8,15 +8,34 @@ import {
   PlusOutlined,
   StarOutlined,
 } from '@ant-design/icons'
+import { createQuestionService } from '@/services'
 
 const MainLayout: FC = () => {
   const nav = useNavigate()
   const { pathname } = useLocation()
+
+  const [loading, setLoading] = useState(false)
+  async function handleCreateClick() {
+    setLoading(true)
+    const data = await createQuestionService()
+    const { id } = data || {}
+    if (id) {
+      nav(`question/edit/${id}`)
+      message.success('创建成功')
+    }
+    setLoading(false)
+  }
   return (
     <div className={styles.container}>
       <div className={styles.left}>
         <Space direction="vertical">
-          <Button type="primary" size="large" icon={<PlusOutlined />}>
+          <Button
+            type="primary"
+            size="large"
+            icon={<PlusOutlined />}
+            onClick={handleCreateClick}
+            disabled={loading}
+          >
             新建问卷
           </Button>
 

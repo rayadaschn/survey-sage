@@ -33,6 +33,14 @@ const QuestionCard: FC<PropsType> = (props: PropsType) => {
     })
   }
 
+  const nav = useNavigate()
+  const handleEdit = () => {
+    nav(`/question/edit/${id}`)
+  }
+  const handleStat = () => {
+    nav(`/question/stat/${id}`)
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.title}>
@@ -65,10 +73,20 @@ const QuestionCard: FC<PropsType> = (props: PropsType) => {
       <div className={styles['button-container']}>
         <div className={styles.left}>
           <Space>
-            <Button icon={<EditOutlined />} type="text" size="small">
+            <Button
+              icon={<EditOutlined />}
+              type="text"
+              size="small"
+              onClick={handleEdit}
+            >
               编辑问卷
             </Button>
-            <Button icon={<LineChartOutlined />} type="text" size="small">
+            <Button
+              icon={<LineChartOutlined />}
+              type="text"
+              size="small"
+              onClick={handleStat}
+            >
               数据统计
             </Button>
           </Space>
