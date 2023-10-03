@@ -9,6 +9,7 @@
     "dev": "vite --mode dev --host",
     "dev:test": "vite --mode test --host",
     "dev:prod": "vite --mode prod --host",
+    "dev:mock": "cd mock && npm run dev",
     "build": "vite --mode prod build",
     "build:dev": "tsc --noEmit && vite --mode dev build",
     "build:test": "tsc --noEmit && vite --mode test build",
@@ -29,6 +30,7 @@
     "@ant-design/icons": "^5.2.6",
     "ahooks": "^3.7.8",
     "antd": "^5.9.4",
+    "axios": "^1.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.16.0"

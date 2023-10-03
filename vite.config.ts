@@ -44,6 +44,27 @@ export default defineConfig(({ mode }) => {
       less: {},
     },
 
+    /** 配置代理 */
+    server: {
+      proxy: {
+        '/devapi/v1': {
+          target: 'http://localhost:3001',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/devapi\/v1/, ''),
+          bypass(req, res, options) {
+            if (options.rewrite && req.url) {
+              const proxyUrl = new URL(
+                options.rewrite(req.url),
+                options.target as string,
+              ).href
+              res.setHeader('x-req-proxyUrl', proxyUrl)
+              console.info(proxyUrl) // 服务器打印访问代理地址
+            }
+          },
+        },
+      },
+    },
+
     /** 打包优化 */
     build: {
       rollupOptions: {
