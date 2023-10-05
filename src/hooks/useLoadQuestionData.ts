@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom'
 import { getQuestionService } from '@/services'
 
-function useLoadQuestionData() {
+export function useLoadQuestionData() {
   const { id = '' } = useParams()
   const [loading, setLoading] = useState(true)
   const [questionData, setQuestionData] = useState({})
@@ -18,5 +18,3 @@ function useLoadQuestionData() {
 
   return { loading, questionData }
 }
-
-export default useLoadQuestionData

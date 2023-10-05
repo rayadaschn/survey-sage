@@ -1,6 +1,5 @@
 /**
  * @description 生成统计列表
- * @author 双越老师
  */
 
 const Mock = require('mockjs')

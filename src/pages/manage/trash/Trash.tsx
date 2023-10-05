@@ -1,51 +1,55 @@
 import React, { FC } from 'react'
 import { useTitle } from 'ahooks'
-import { Empty, Table, Typography, Tag, Space, Button, Modal } from 'antd'
+import { Empty, Table, Typography, Tag, Space, Button, Modal, Spin } from 'antd'
 import styles from './Trash.module.less'
 import { ExclamationCircleOutlined } from '@ant-design/icons'
 import ListSearch from '@/components/ListSearch'
+import { useLoadQuestionListData } from '@/hooks'
 
 const { Title } = Typography
 const { confirm } = Modal
-const rawQuestionList = [
-  {
-    id: 'q1',
-    title: '问卷 1',
-    isPublished: false,
-    isStar: false,
-    answerContent: 9,
-    currentAt: '1 月 1 日 12:45',
-  },
-  {
-    id: 'q2',
-    title: '问卷 2',
-    isPublished: true,
-    isStar: false,
-    answerContent: 3,
-    currentAt: '2 月 1 日 12:45',
-  },
-  {
-    id: 'q3',
-    title: '问卷 3',
-    isPublished: false,
-    isStar: true,
-    answerContent: 1,
-    currentAt: '3 月 1 日 12:45',
-  },
-  {
-    id: 'q4',
-    title: '问卷 4',
-    isPublished: true,
-    isStar: true,
-    answerContent: 6,
-    currentAt: '4 月 1 日 12:45',
-  },
-]
+// const rawQuestionList = [
+//   {
+//     id: 'q1',
+//     title: '问卷 1',
+//     isPublished: false,
+//     isStar: false,
+//     answerContent: 9,
+//     currentAt: '1 月 1 日 12:45',
+//   },
+//   {
+//     id: 'q2',
+//     title: '问卷 2',
+//     isPublished: true,
+//     isStar: false,
+//     answerContent: 3,
+//     currentAt: '2 月 1 日 12:45',
+//   },
+//   {
+//     id: 'q3',
+//     title: '问卷 3',
+//     isPublished: false,
+//     isStar: true,
+//     answerContent: 1,
+//     currentAt: '3 月 1 日 12:45',
+//   },
+//   {
+//     id: 'q4',
+//     title: '问卷 4',
+//     isPublished: true,
+//     isStar: true,
+//     answerContent: 6,
+//     currentAt: '4 月 1 日 12:45',
+//   },
+// ]
 
 const Trash: FC = () => {
   useTitle('问卷调查')
 
-  const [questionList] = useState(rawQuestionList)
+  // const [questionList] = useState(rawQuestionList)
+  const { data = {}, loading } = useLoadQuestionListData({ isStar: true })
+  const { list = [], total = 0 } = data
+
   const [selectedIds, setSelectedIds] = useState<string[]>([])
 
   const tableColums = [
@@ -66,11 +70,11 @@ const Trash: FC = () => {
     },
     {
       title: '答卷',
-      dataIndex: 'answerContent',
+      dataIndex: 'answerCount',
     },
     {
       title: '创建时间',
-      dataIndex: 'currentAt',
+      dataIndex: 'createdAt',
     },
   ]
 
@@ -94,8 +98,16 @@ const Trash: FC = () => {
         </div>
       </div>
       <div className={styles.content}>
-        {questionList.length === 0 && <Empty description="暂无数据" />}
-        {questionList.length > 0 && (
+        {/* 回收列表 */}
+        {loading && (
+          <div className="text-center">
+            <Spin />
+          </div>
+        )}
+
+        {!loading && list.length === 0 && <Empty description="暂无数据" />}
+
+        {list.length > 0 && (
           <div>
             <Space className="mb">
               <Button type="primary" disabled={selectedIds.length === 0}>
@@ -106,8 +118,8 @@ const Trash: FC = () => {
               </Button>
             </Space>
             <Table
-              rowKey={(q) => q.id}
-              dataSource={questionList}
+              rowKey={(q) => q._id}
+              dataSource={list}
               columns={tableColums}
               pagination={false}
               rowSelection={{

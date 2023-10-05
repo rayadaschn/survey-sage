@@ -104,7 +104,7 @@ export default defineConfig(({ mode }) => {
        * @tips 如果直接使用没导入的 API 依然提示报错，请重启 VS Code
        */
       autoImport({
-        imports: ['react', 'react-router-dom'],
+        imports: ['react', 'react-router-dom', 'ahooks'],
         dts: 'src/types/declaration-files/auto-import.d.ts',
         eslintrc: {
           enabled: true,

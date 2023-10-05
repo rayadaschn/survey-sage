@@ -3,7 +3,9 @@
     "ahooks",
     "antd",
     "Attributify",
+    "ctitle",
     "devapi",
+    "mockjs",
     "unocss",
     "unplugin",
     "Vite"
