@@ -1,7 +1,6 @@
 import React, { FC } from 'react'
 import { useTitle } from 'ahooks'
 import { Empty, Table, Typography, Tag, Space, Button, Modal, Spin } from 'antd'
-import styles from './Trash.module.less'
 import { ExclamationCircleOutlined } from '@ant-design/icons'
 import ListSearch from '@/components/ListSearch'
 import { useLoadQuestionListData } from '@/hooks'
@@ -89,15 +88,15 @@ const Trash: FC = () => {
 
   return (
     <>
-      <div className={styles.header}>
-        <div className={styles.left}>
+      <div className="flex">
+        <div className="flex-1">
           <Title level={3}>回收站</Title>
         </div>
-        <div className={styles.right}>
+        <div className="flex-1 text-center">
           <ListSearch />
         </div>
       </div>
-      <div className={styles.content}>
+      <div className="mb-5">
         {/* 回收列表 */}
         {loading && (
           <div className="text-center">

@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom'
-import { getQuestionService } from '@/services'
+import { getQuestionService } from '@/api'
 
 export function useLoadQuestionData() {
   const { id = '' } = useParams()

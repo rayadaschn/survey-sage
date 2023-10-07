@@ -42,9 +42,9 @@ const QuestionCard: FC<PropsType> = (props: PropsType) => {
   }
 
   return (
-    <div className={styles.container}>
-      <div className={styles.title}>
-        <div className={styles.left}>
+    <div className="mb-2.5 border-rounded bg-white p-3 transition-transform hover:scale-105 hover:transform hover:shadow-md">
+      <div className="flex">
+        <div className="flex-1">
           <Link
             to={isPublished ? `/question/stat/${id}` : `/question/edit/${id}`}
           >
@@ -55,7 +55,7 @@ const QuestionCard: FC<PropsType> = (props: PropsType) => {
           </Link>
         </div>
 
-        <div className={styles.right}>
+        <div className="flex-1 text-center font-size-3">
           <Space>
             {isPublished ? (
               <Tag color="processing">已发布</Tag>
@@ -70,8 +70,8 @@ const QuestionCard: FC<PropsType> = (props: PropsType) => {
 
       <Divider className="m-3" />
 
-      <div className={styles['button-container']}>
-        <div className={styles.left}>
+      <div className="flex">
+        <div className="flex-1">
           <Space>
             <Button
               icon={<EditOutlined />}
@@ -91,9 +91,14 @@ const QuestionCard: FC<PropsType> = (props: PropsType) => {
             </Button>
           </Space>
         </div>
-        <div className={styles.right}>
+        <div className="flex-1 text-center">
           <Space>
-            <Button type="text" icon={<StarOutlined />} size="small">
+            <Button
+              type="text"
+              icon={<StarOutlined />}
+              color="#999"
+              size="small"
+            >
               标星
             </Button>
             <Popconfirm
@@ -102,7 +107,12 @@ const QuestionCard: FC<PropsType> = (props: PropsType) => {
               cancelText="取消"
               onConfirm={onHandleCopy}
             >
-              <Button type="text" icon={<CopyOutlined />} size="small">
+              <Button
+                type="text"
+                icon={<CopyOutlined />}
+                color="#999"
+                size="small"
+              >
                 复制
               </Button>
             </Popconfirm>
@@ -111,6 +121,7 @@ const QuestionCard: FC<PropsType> = (props: PropsType) => {
               type="text"
               icon={<DeleteOutlined />}
               size="small"
+              color="#999"
               onClick={onHandleDel}
             >
               删除

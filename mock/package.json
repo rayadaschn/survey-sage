@@ -12,6 +12,7 @@
   "dependencies": {
     "koa": "^2.14.1",
     "koa-router": "^12.0.0",
+    "koa2-cors": "^2.0.6",
     "mockjs": "^1.1.0"
   },
   "devDependencies": {

@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { Outlet } from 'react-router-dom'
 
-const MainLayout: FC = () => {
+const QuestionLayout: FC = () => {
   return (
     <>
       <p>Question layout</p>
@@ -12,4 +12,4 @@ const MainLayout: FC = () => {
   )
 }
 
-export default MainLayout
+export default QuestionLayout

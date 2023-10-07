@@ -1,14 +1,13 @@
 import React, { FC } from 'react'
 import { Outlet } from 'react-router-dom'
 import { Button, Space, Divider, message } from 'antd'
-import styles from './ManageLayout.module.less'
 import {
   BarsOutlined,
   DeleteOutlined,
   PlusOutlined,
   StarOutlined,
 } from '@ant-design/icons'
-import { createQuestionService } from '@/services'
+import { createQuestionService } from '@/api'
 
 const MainLayout: FC = () => {
   const nav = useNavigate()
@@ -38,8 +37,8 @@ const MainLayout: FC = () => {
   )
 
   return (
-    <div className={styles.container}>
-      <div className={styles.left}>
+    <div className="py-6">
+      <div className="w-30">
         <Space direction="vertical">
           <Button
             type="primary"
@@ -81,7 +80,7 @@ const MainLayout: FC = () => {
           </Button>
         </Space>
       </div>
-      <div className={styles.right}>
+      <div className="ml-15 flex-1">
         <Outlet />
       </div>
     </div>

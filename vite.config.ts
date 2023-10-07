@@ -19,7 +19,7 @@ export default defineConfig(({ mode }) => {
     envDir,
 
     /**
-     * 项目部署目录路径
+     * 项目部署目录路径(静态资源引用路径，默认为"/")
      *
      * @description 见项目根目录下的 `config` 文件夹说明
      */
@@ -46,6 +46,10 @@ export default defineConfig(({ mode }) => {
 
     /** 配置代理 */
     server: {
+      port: 5173,
+      open: '/survey-sage/',
+      host: true, // 支持 IP 访问
+      // 本地开发，启动 mock，更改 config/.env.dev 中的 axios 拦截器
       proxy: {
         '/devapi/v1': {
           target: 'http://localhost:3001',
@@ -104,7 +108,12 @@ export default defineConfig(({ mode }) => {
        * @tips 如果直接使用没导入的 API 依然提示报错，请重启 VS Code
        */
       autoImport({
-        imports: ['react', 'react-router-dom', 'ahooks'],
+        imports: [
+          'react',
+          'react-router-dom',
+          { classnames: ['default'] },
+          'ahooks',
+        ],
         dts: 'src/types/declaration-files/auto-import.d.ts',
         eslintrc: {
           enabled: true,

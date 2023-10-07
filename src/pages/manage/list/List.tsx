@@ -1,6 +1,5 @@
 import React, { FC, useState } from 'react'
 // import QuestionCard from '@/components/QuestionCard'
-import styles from './List.module.less'
 import QuestionCard from '@/components/QuestionCard'
 import ListSearch from '@/components/ListSearch'
 // import { useSearchParams } from 'react-router-dom'
@@ -52,15 +51,15 @@ const List: FC = () => {
 
   return (
     <>
-      <div className={styles.header}>
-        <div className={styles.left}>
+      <div className="flex">
+        <div className="flex-1">
           <Title level={3}>我的问卷</Title>
         </div>
-        <div className={styles.right}>
+        <div className="flex-1 text-center">
           <ListSearch />
         </div>
       </div>
-      <div className={styles.content}>
+      <div className="mb-5">
         {/* 问卷列表 */}
         {/* {questionList.map((item) => {
           const { id } = item
@@ -78,7 +77,7 @@ const List: FC = () => {
             return <QuestionCard key={_id} {...q} />
           })}
       </div>
-      <div className={styles.foot}>footer</div>
+      <div className="color-blue">footer</div>
     </>
   )
 }

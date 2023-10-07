@@ -8,7 +8,7 @@ const { Title } = Typography
 
 const Logo: FC = () => {
   return (
-    <div className={styles.container}>
+    <div>
       <Link to="/">
         <Space>
           <Title>

@@ -62,11 +62,11 @@ const router = createBrowserRouter(
       element: <QuestionLayout />,
       children: [
         {
-          path: 'edit/:id',
+          path: 'edit/:id', // 编辑页
           element: <Edit />,
         },
         {
-          path: 'stat/:id',
+          path: 'stat/:id', // statistics 统计
           element: <Stat />,
         },
       ],
@@ -82,3 +82,13 @@ export const HOME_PATHNAME = '/'
 export const LOGIN_PATHNAME = '/login'
 export const REGISTER_PATHNAME = '/register'
 export const MANAGE_INDEX_PATHNAME = '/manage/list'
+
+/** 区分登录页和注册页 */
+export function isLoginOrRegister(pathname: string) {
+  return [LOGIN_PATHNAME, REGISTER_PATHNAME].includes(pathname)
+}
+
+/** 判断是否需要用户信息 */
+export function isNoNeedUserInfo(pathname: string) {
+  return [HOME_PATHNAME, LOGIN_PATHNAME, REGISTER_PATHNAME].includes(pathname)
+}
