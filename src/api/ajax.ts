@@ -20,7 +20,6 @@ enum ResultEnum {
   TIMEOUT = 25000,
   TYPE = 'success',
 }
-console.log('API_BASE_URL', API_BASE_URL)
 
 const instance = axios.create({
   timeout: 10 * 1000,

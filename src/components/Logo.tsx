@@ -10,7 +10,7 @@ const Logo: FC = () => {
   return (
     <div>
       <Link to="/">
-        <Space>
+        <Space className={styles.container}>
           <Title>
             <FormOutlined />
           </Title>
