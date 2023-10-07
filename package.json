@@ -46,6 +46,7 @@
     "@unocss/transformer-attributify-jsx": "^0.56.4",
     "@vitejs/plugin-legacy": "^4.1.1",
     "@vitejs/plugin-react": "^4.1.0",
+    "classnames": "^2.3.2",
     "eslint": "^8.50.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-define-config": "^1.23.0",

@@ -1,6 +1,3 @@
-// 常量
-export const LIST_SEARCH_PARAM_KEY = 'keyword'
-
 // 当前环境模式
 export const ENV_MODE = import.meta.env.MODE
 
@@ -27,3 +24,10 @@ export const STORAGE_PREFIX = import.meta.env.VITE_STORAGE_PREFIX
 
 // * 路由白名单地址（必须是本地存在的路由 staticRouter.ts）
 export const ROUTER_WHITE_LIST: string[] = ['/404']
+
+// 常量
+export const LIST_SEARCH_PARAM_KEY = 'keyword'
+export const LIST_PAGE_PARAM_KEY = 'page'
+export const LIST_PAGE_SIZE_PARAM_KEY = 'pageSize'
+
+export const LIST_PAGE_SIZE = 10
