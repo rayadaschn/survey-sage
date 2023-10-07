@@ -1,4 +1,4 @@
-import{r as e,n as t}from"./@ant-design/icons-8bf8c374.js";
+import{r as e,o as t}from"./@ant-design/icons-70aec636.js";
 /**
  * @remix-run/router v1.9.0
  *
