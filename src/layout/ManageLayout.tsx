@@ -37,7 +37,7 @@ const MainLayout: FC = () => {
   )
 
   return (
-    <div className="py-6">
+    <div className="mx-auto my-0 w-300 flex py-6">
       <div className="w-30">
         <Space direction="vertical">
           <Button

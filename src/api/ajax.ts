@@ -58,7 +58,7 @@ instance.interceptors.response.use(
       return Promise.reject(data)
     }
 
-    if (errno !== ResultEnum.SUCCESS) {
+    if (errno !== 0 && errno !== ResultEnum.SUCCESS) {
       message.error(msg || ResultEnum.ERRMESSAGE)
       return Promise.reject(data)
     }

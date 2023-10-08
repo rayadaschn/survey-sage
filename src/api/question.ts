@@ -27,8 +27,7 @@ export async function getQuestionListService(
   opt: Partial<SearchOption> = {},
 ): Promise<ResDataType> {
   const url = '/api/question'
-  const data = (await axios.get(url, { params: opt })) as ResDataType
-  return data
+  return (await axios.get(url, { params: opt })) as ResDataType
 }
 
 /** 更新单个问卷 */

@@ -1,54 +1,36 @@
 import React, { FC } from 'react'
 import { useTitle } from 'ahooks'
-import { Empty, Table, Typography, Tag, Space, Button, Modal, Spin } from 'antd'
+import {
+  Empty,
+  Table,
+  Typography,
+  Tag,
+  Space,
+  Button,
+  Modal,
+  Spin,
+  message,
+} from 'antd'
 import { ExclamationCircleOutlined } from '@ant-design/icons'
 import ListSearch from '@/components/ListSearch'
+import ListPage from '@/components/ListPage'
 import { useLoadQuestionListData } from '@/hooks'
+import { deleteQuestionsService, updateQuestionService } from '@/api'
 
 const { Title } = Typography
 const { confirm } = Modal
-// const rawQuestionList = [
-//   {
-//     id: 'q1',
-//     title: '问卷 1',
-//     isPublished: false,
-//     isStar: false,
-//     answerContent: 9,
-//     currentAt: '1 月 1 日 12:45',
-//   },
-//   {
-//     id: 'q2',
-//     title: '问卷 2',
-//     isPublished: true,
-//     isStar: false,
-//     answerContent: 3,
-//     currentAt: '2 月 1 日 12:45',
-//   },
-//   {
-//     id: 'q3',
-//     title: '问卷 3',
-//     isPublished: false,
-//     isStar: true,
-//     answerContent: 1,
-//     currentAt: '3 月 1 日 12:45',
-//   },
-//   {
-//     id: 'q4',
-//     title: '问卷 4',
-//     isPublished: true,
-//     isStar: true,
-//     answerContent: 6,
-//     currentAt: '4 月 1 日 12:45',
-//   },
-// ]
 
 const Trash: FC = () => {
   useTitle('问卷调查')
 
-  // const [questionList] = useState(rawQuestionList)
-  const { data = {}, loading } = useLoadQuestionListData({ isStar: true })
+  const {
+    data = {},
+    loading,
+    refresh,
+  } = useLoadQuestionListData({ isDeleted: true })
   const { list = [], total = 0 } = data
 
+  // 记录选中的 id
   const [selectedIds, setSelectedIds] = useState<string[]>([])
 
   const tableColums = [
@@ -77,12 +59,44 @@ const Trash: FC = () => {
     },
   ]
 
+  /** 恢复 */
+  const { run: recover } = useRequest(
+    async () => {
+      // 异步循环, 确保在处理下一个 selectedIds 元素之前，当前元素的更新操作已经完成
+      for await (const id of selectedIds) {
+        await updateQuestionService(id, { isDeleted: false })
+      }
+    },
+    {
+      manual: true,
+      debounceWait: 500, // 防抖
+      onSuccess() {
+        message.success('恢复成功')
+        refresh() // 手动刷新列表
+        setSelectedIds([])
+      },
+    },
+  )
+
+  /** 删除 */
+  const { run: deleteQuestion } = useRequest(
+    async () => await deleteQuestionsService(selectedIds),
+    {
+      manual: true,
+      onSuccess() {
+        message.success('删除成功')
+        refresh()
+        setSelectedIds([])
+      },
+    },
+  )
+
   const del = () => {
     confirm({
       title: '确定彻底删除该问卷?',
       icon: <ExclamationCircleOutlined />,
       content: '删除以后不可撤回',
-      onOk: () => alert('删除'),
+      onOk: deleteQuestion,
     })
   }
 
@@ -109,7 +123,11 @@ const Trash: FC = () => {
         {list.length > 0 && (
           <div>
             <Space className="mb">
-              <Button type="primary" disabled={selectedIds.length === 0}>
+              <Button
+                type="primary"
+                disabled={selectedIds.length === 0}
+                onClick={recover}
+              >
                 恢复
               </Button>
               <Button danger disabled={selectedIds.length === 0} onClick={del}>
@@ -130,6 +148,9 @@ const Trash: FC = () => {
             />
           </div>
         )}
+      </div>
+      <div className="text-center color-blue">
+        {list.length > 0 && <ListPage total={total} />}
       </div>
     </>
   )
