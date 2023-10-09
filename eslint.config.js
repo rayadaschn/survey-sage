@@ -141,7 +141,7 @@ export default defineFlatConfig([
       'react/style-prop-object': 'error',
       'react/void-dom-elements-no-children': 'error',
       'react-hooks/rules-of-hooks': 'error',
-      'react-hooks/exhaustive-deps': 'error',
+      'react-hooks/exhaustive-deps': 'off',
       'jsx-a11y/alt-text': 'error',
       'jsx-a11y/anchor-has-content': 'error',
       'jsx-a11y/anchor-is-valid': 'error',

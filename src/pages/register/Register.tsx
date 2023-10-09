@@ -1,14 +1,31 @@
 import { UserAddOutlined } from '@ant-design/icons'
 import React, { FC } from 'react'
 import { Link } from 'react-router-dom'
-import { Typography, Space, Form, Input, Button } from 'antd'
+import { Typography, Space, Form, Input, Button, message } from 'antd'
 import { LOGIN_PATHNAME } from '@/router'
+import { registerService } from '@/api'
 
 const { Title } = Typography
 
 const Register: FC = () => {
+  const nav = useNavigate()
+
+  const { run } = useRequest(
+    async (values) => {
+      const { username, password, nickname } = values
+      await registerService(username, password, nickname)
+    },
+    {
+      manual: true,
+      onSuccess() {
+        message.success('注册成功')
+        nav(LOGIN_PATHNAME)
+      },
+    },
+  )
   const onFinish = (values: any) => {
     console.log(values)
+    run(values)
   }
   return (
     <div className="flex flex-col items-center justify-center bg-white">
