@@ -1,8 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
-import countReducer from './modules/count'
+import userReducer, { UserStateType } from './modules/userReducer'
+
+export interface StateType {
+  user: UserStateType
+}
 
 export default configureStore({
   reducer: {
-    count: countReducer,
+    // 分模块
+    user: userReducer,
   },
 })

@@ -4,15 +4,21 @@ import { LOGIN_PATHNAME } from '@/router'
 import { removeToken } from '@/utils'
 import { Button, message } from 'antd'
 import { UserOutlined } from '@ant-design/icons'
-import { getUserInfoService } from '@/api/user'
+import { useGetUserInfo } from '@/hooks'
+import { logoutReducer } from '@/store/modules/userReducer'
+import { useDispatch } from 'react-redux'
 
 const UserInfo: FC = () => {
   const nav = useNavigate()
+  const dispatch = useDispatch()
 
-  const { data } = useRequest(getUserInfoService) // ajax
-  const { username, nickname } = data || {}
+  // const { data } = useRequest(getUserInfoService) // ajax
+  // const { username, nickname } = data || {}
+  const { username, nickname } = useGetUserInfo() // 从 redux 中获取用户信息
 
   function logout() {
+    dispatch(logoutReducer())
+
     removeToken()
     message.success('退出成功')
     nav(LOGIN_PATHNAME)

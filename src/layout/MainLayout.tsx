@@ -1,12 +1,16 @@
 import React, { FC } from 'react'
 import { Outlet } from 'react-router-dom'
-import { Layout } from 'antd'
+import { Layout, Spin } from 'antd'
 import Logo from '@/components/Logo'
 import UserInfo from '@/components/UserInfo'
+import { useLoadUserData, useNavPage } from '@/hooks'
 
 const { Header, Content, Footer } = Layout
 
 const MainLayout: FC = () => {
+  const { waitingUserData } = useLoadUserData()
+  useNavPage(waitingUserData)
+
   return (
     <Layout>
       <Header className="px-6">
@@ -19,7 +23,13 @@ const MainLayout: FC = () => {
         </div>
       </Header>
       <Content className="min-h-[calc(100vh-140px)]">
-        <Outlet />
+        {waitingUserData ? (
+          <div className="mt-15 text-center">
+            <Spin />
+          </div>
+        ) : (
+          <Outlet />
+        )}
       </Content>
       <Footer className="border-t border-gray-200 border-solid bg-white text-center">
         文件调查@2023 Created by Huy
