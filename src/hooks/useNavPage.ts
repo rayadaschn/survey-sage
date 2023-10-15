@@ -12,7 +12,7 @@ export function useNavPage(waitingUserData: boolean) {
   const nav = useNavigate()
 
   useEffect(() => {
-    if (waitingUserData) return // 正在请求用户信息
+    if (waitingUserData) return // 正在请求用户信息, 不做处理...
 
     // 已登录: 拦截登录/注册页
     if (username) {

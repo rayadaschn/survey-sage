@@ -17,7 +17,9 @@ export const userSlice = createSlice({
     ) => {
       return action.payload
     },
-    logoutReducer: () => INIT_STATE,
+    logoutReducer: () => {
+      return INIT_STATE
+    },
   },
 })
 

@@ -5,6 +5,8 @@ import { Typography, Space, Form, Input, Button, message, Checkbox } from 'antd'
 import { loginService } from '@/api'
 import { setToken } from '@/utils'
 import { MANAGE_INDEX_PATHNAME, REGISTER_PATHNAME } from '@/router'
+import { useDispatch } from 'react-redux'
+import { loginReducer } from '@/store/modules/userReducer'
 
 const { Title } = Typography
 
@@ -30,6 +32,7 @@ function getUserInfoFromStorage() {
 
 const Login: FC = () => {
   const nav = useNavigate()
+  const dispatch = useDispatch()
   const [form] = Form.useForm()
 
   useEffect(() => {
@@ -40,6 +43,7 @@ const Login: FC = () => {
   const { run } = useRequest(
     async (username: string, password: string) => {
       const data = await loginService(username, password)
+      if (data.token) dispatch(loginReducer({ username, nickname: username }))
       return data
     },
     {
@@ -47,7 +51,6 @@ const Login: FC = () => {
       onSuccess(result) {
         const { token = '' } = result
         setToken(token) // 存储 token
-
         message.success('登录成功')
         nav(MANAGE_INDEX_PATHNAME) // 导航至'我的问卷'
       },
