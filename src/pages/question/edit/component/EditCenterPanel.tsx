@@ -4,6 +4,7 @@ import React, { FC } from 'react'
 interface PropsType {
   loading: boolean
 }
+
 const EditCenterPanel: FC<PropsType> = ({ loading }) => {
   // 检测是否正在加载
   if (loading) {
