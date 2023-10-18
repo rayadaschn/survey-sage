@@ -15,8 +15,8 @@ const EditHeader: FC = () => {
           <div className="mb-0 text-[18px] leading-none">标题</div>
         </Space>
       </div>
-      <div className="flex-1 text-center">中部</div>
-      <div className="flex-1 text-center">右侧</div>
+      <div className="flex-1 text-center leading-[2]">中部</div>
+      <div className="flex-1 text-center leading-[2]">右侧</div>
     </div>
   )
 }
