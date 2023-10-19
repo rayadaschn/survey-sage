@@ -4,7 +4,7 @@ import {
   isLoginOrRegister,
   isNoNeedUserInfo,
 } from '@/router'
-import { useGetUserInfo } from '.'
+import { useGetUserInfo } from '@/hooks'
 
 export function useNavPage(waitingUserData: boolean) {
   const { username } = useGetUserInfo()

@@ -1,13 +1,12 @@
 import React, { FC } from 'react'
-import { useLoadQuestionData } from '@/hooks'
-import { useGetPageInfo } from '@/hooks/useGetPageInfo'
+import { useLoadQuestionData, useGetPageInfo } from '@/hooks'
 import EditHeader from './component/EditHeader'
 import EditLeftPanel from './component/EditLeftPanel'
 import EditCenterPanel from './component/EditCenterPanel'
 import EditRightPanel from './component/EditRightPanel'
 
 const Edit: FC = () => {
-  const { loading, questionData } = useLoadQuestionData()
+  const { loading } = useLoadQuestionData()
 
   const { title } = useGetPageInfo()
   useTitle(`问卷编辑 - ${title}`)

@@ -1,3 +1,6 @@
+import QuestionTitle from '@/components/QuestionComponents/QuestionTitle/Component'
+import PropComponent from '@/components/QuestionComponents/QuestionTitle/PropComponent'
+import { useGetComponentInfo } from '@/hooks'
 import { Spin } from 'antd'
 import React, { FC } from 'react'
 
@@ -14,7 +17,25 @@ const EditCenterPanel: FC<PropsType> = ({ loading }) => {
       </div>
     )
   }
-  return <>EditCenterPanel</>
+
+  // const { componentList } = useGetComponentInfo()
+
+  return (
+    <>
+      <div>
+        <div>
+          <div>
+            <QuestionTitle />
+          </div>
+        </div>
+        <div>
+          <div>
+            <PropComponent />
+          </div>
+        </div>
+      </div>
+    </>
+  )
 }
 
 export default EditCenterPanel
