@@ -1,6 +1,6 @@
-import QuestionTitle from '@/components/QuestionComponents/QuestionTitle/Component'
-import PropComponent from '@/components/QuestionComponents/QuestionTitle/PropComponent'
+import { getComponentConfByType } from '@/components/QuestionComponents'
 import { useGetComponentInfo } from '@/hooks'
+import { ComponentInfoType } from '@/store/modules/componentsReducer'
 import { Spin } from 'antd'
 import React, { FC } from 'react'
 
@@ -9,6 +9,8 @@ interface PropsType {
 }
 
 const EditCenterPanel: FC<PropsType> = ({ loading }) => {
+  const { componentList } = useGetComponentInfo()
+
   // 检测是否正在加载
   if (loading) {
     return (
@@ -18,23 +20,30 @@ const EditCenterPanel: FC<PropsType> = ({ loading }) => {
     )
   }
 
-  // const { componentList } = useGetComponentInfo()
+  const genComponent = (componentInfo: ComponentInfoType) => {
+    const { type, props } = componentInfo
+    const componentConf = getComponentConfByType(type)
+    if (componentConf == null) return null
+
+    const { Component } = componentConf
+    return <Component {...props} />
+  }
 
   return (
-    <>
-      <div>
-        <div>
-          <div>
-            <QuestionTitle />
+    <div className="min-h-[100%] overflow-hidden bg-white">
+      {componentList.map((item) => {
+        const { fe_id } = item
+
+        return (
+          <div
+            key={fe_id}
+            className="m-3 border border-white rounded-sm border-solid p-3 hover:border-gray-200"
+          >
+            <div className="pointer-events-none">{genComponent(item)}</div>
           </div>
-        </div>
-        <div>
-          <div>
-            <PropComponent />
-          </div>
-        </div>
-      </div>
-    </>
+        )
+      })}
+    </div>
   )
 }
 

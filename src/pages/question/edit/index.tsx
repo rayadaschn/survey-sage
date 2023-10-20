@@ -21,7 +21,7 @@ const Edit: FC = () => {
           </div>
 
           <div className="relative flex-1 overflow-hidden">
-            <div className="absolute left-1/2 top-1/2 h-178 w-100 flex transform items-center justify-center overflow-auto shadow-2xl -translate-x-1/2 -translate-y-1/2">
+            <div className="absolute left-1/2 top-1/2 h-178 w-150 transform items-center justify-center overflow-auto shadow-2xl -translate-x-1/2 -translate-y-1/2">
               <EditCenterPanel loading={loading} />
             </div>
           </div>
