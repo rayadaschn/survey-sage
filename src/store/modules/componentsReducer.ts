@@ -25,6 +25,9 @@ const INIT_STATE: ComponentsStateType = {
   copiedComponent: null,
 }
 
+/**
+ * 组件列表
+ */
 export const componentsSlice = createSlice({
   name: 'components',
   initialState: INIT_STATE,

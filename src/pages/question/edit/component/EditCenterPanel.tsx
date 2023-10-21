@@ -2,6 +2,7 @@ import { getComponentConfByType } from '@/components/QuestionComponents'
 import { useGetComponentInfo } from '@/hooks'
 import { ComponentInfoType } from '@/store/modules/componentsReducer'
 import { Spin } from 'antd'
+import classNames from 'classnames'
 import React, { FC } from 'react'
 
 interface PropsType {
@@ -34,11 +35,12 @@ const EditCenterPanel: FC<PropsType> = ({ loading }) => {
       {componentList.map((item) => {
         const { fe_id } = item
 
+        const wrapperdefaultClassName =
+          'm-3 border border-white rounded-sm border-solid p-3 hover:border-gray-200'
+        const wrapperName = classNames({ [wrapperdefaultClassName]: true })
+
         return (
-          <div
-            key={fe_id}
-            className="m-3 border border-white rounded-sm border-solid p-3 hover:border-gray-200"
-          >
+          <div key={fe_id} className={wrapperName}>
             <div className="pointer-events-none">{genComponent(item)}</div>
           </div>
         )

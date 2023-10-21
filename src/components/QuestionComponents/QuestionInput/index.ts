@@ -1,8 +1,8 @@
 import Component from './Component'
 import PropComponent from './PropComponent'
-import { QuestionInputDefaultProps } from './interface'
+import { QuestionInputDefaultProps } from './type'
 
-export * from './interface'
+export * from './type'
 
 // Input 组件的配置
 export default {

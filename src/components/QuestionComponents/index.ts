@@ -3,7 +3,7 @@ import QuestionInputConf, { QuestionInputPropsType } from './QuestionInput'
 import QuestionTitleConf, { QuestionTitlePropsType } from './QuestionTitle'
 
 /** 统一封装组件的 prop type */
-export type ComponentPropsType = QuestionInputPropsType & QuestionTitlePropsType
+export type ComponentPropsType = QuestionInputPropsType | QuestionTitlePropsType
 
 /** 统一封装组件配置 type */
 export interface ComponentConfType {
@@ -19,6 +19,10 @@ const componentConfList: ComponentConfType[] = [
   QuestionTitleConf,
 ]
 
+/**
+ * 依据组件类型，从配置中返回相应组件
+ * @param type 组件类型
+ */
 export function getComponentConfByType(type: string) {
   return componentConfList.find((item) => item.type === type)
 }

@@ -15,6 +15,9 @@ const INIT_STATE: PageInfoType = {
   css: '',
 }
 
+/**
+ * 页面数据
+ */
 const pageInfoSlice = createSlice({
   name: 'pageInfo',
   initialState: INIT_STATE,

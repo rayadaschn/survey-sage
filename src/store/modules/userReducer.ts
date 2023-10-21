@@ -7,6 +7,9 @@ export interface UserStateType {
 
 const INIT_STATE: UserStateType = { username: '', nickname: '' }
 
+/**
+ * 用户管理
+ */
 export const userSlice = createSlice({
   name: 'user',
   initialState: INIT_STATE,
