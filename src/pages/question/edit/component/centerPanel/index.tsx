@@ -1,5 +1,5 @@
 import { getComponentConfByType } from '@/components/QuestionComponents'
-import { useGetComponentInfo } from '@/hooks'
+import { useBindKeyPress, useGetComponentInfo } from '@/hooks'
 import {
   ComponentInfoType,
   changeSelectedId,
@@ -16,6 +16,8 @@ interface PropsType {
 const EditCenterPanel: FC<PropsType> = ({ loading }) => {
   const { componentList, selectedIs } = useGetComponentInfo()
   const dispatch = useDispatch()
+  // 绑定快捷键
+  useBindKeyPress()
 
   // 检测是否正在加载
   if (loading) {

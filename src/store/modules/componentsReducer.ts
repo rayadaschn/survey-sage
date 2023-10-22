@@ -259,7 +259,7 @@ export const componentsSlice = createSlice({
         const { componentList: curComponentList } = draft
         const { oldIndex, newIndex } = action.payload
 
-        draft.componentList = arrayMove(curComponentList, oldIndex, newIndex)
+        // draft.componentList = arrayMove(curComponentList, oldIndex, newIndex)
       },
     ),
   },

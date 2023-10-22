@@ -1,3 +1,4 @@
+export * from './modules/useBindKeyPress'
 export * from './modules/useGetComponentInfo'
 export * from './modules/useGetPageInfo'
 export * from './modules/useGetUserInfo'
