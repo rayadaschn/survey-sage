@@ -10,6 +10,7 @@ export interface ComponentConfType {
   title: string
   type: string
   Component: FC<ComponentPropsType>
+  PropComponent: FC<ComponentPropsType>
   defaultProps: ComponentPropsType
 }
 
@@ -17,6 +18,17 @@ export interface ComponentConfType {
 const componentConfList: ComponentConfType[] = [
   QuestionInputConf,
   QuestionTitleConf,
+]
+
+/**
+ * 组件分组
+ */
+export const componentConfGroup = [
+  {
+    groupId: 'inputGroup',
+    groupName: '用户输入',
+    components: [QuestionInputConf],
+  },
 ]
 
 /**

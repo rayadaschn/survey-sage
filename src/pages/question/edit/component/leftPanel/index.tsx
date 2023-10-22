@@ -1,8 +1,8 @@
 import { AppstoreOutlined, BarsOutlined } from '@ant-design/icons'
 import { Tabs } from 'antd'
 import React, { FC } from 'react'
-import EditLeftComponentLib from './EditLeftComponentLib'
-import EditLeftLayers from './EditLeftLayers'
+import LeftComponentLib from './LeftComponentLib'
+import LeftLayers from './LeftLayers'
 
 const EditLeftPanel: FC = () => {
   const tabsItems = [
@@ -14,7 +14,7 @@ const EditLeftPanel: FC = () => {
           组件库
         </span>
       ),
-      children: <EditLeftComponentLib />,
+      children: <LeftComponentLib />,
     },
     {
       key: 'layers',
@@ -24,7 +24,7 @@ const EditLeftPanel: FC = () => {
           组件库
         </span>
       ),
-      children: <EditLeftLayers />,
+      children: <LeftLayers />,
     },
   ]
   return (

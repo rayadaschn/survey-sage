@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-const EditLeftLayers: FC = () => {
+const LeftLayers: FC = () => {
   return (
     <>
       <div>layers</div>{' '}
@@ -8,4 +8,4 @@ const EditLeftLayers: FC = () => {
   )
 }
 
-export default EditLeftLayers
+export default LeftLayers

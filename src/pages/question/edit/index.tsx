@@ -1,9 +1,9 @@
 import React, { FC } from 'react'
 import { useLoadQuestionData, useGetPageInfo } from '@/hooks'
-import EditHeader from './component/EditHeader'
-import EditLeftPanel from './component/EditLeftPanel'
-import EditCenterPanel from './component/EditCenterPanel'
-import EditRightPanel from './component/EditRightPanel'
+import EditHeader from './component/header'
+import EditLeftPanel from './component/leftPanel'
+import EditCenterPanel from './component/centerPanel'
+import EditRightPanel from './component/rightPanel'
 
 const Edit: FC = () => {
   const { loading } = useLoadQuestionData()
