@@ -1,18 +1,39 @@
 import { FC } from 'react'
-import QuestionInputConf, { QuestionInputPropsType } from './QuestionInput'
-import QuestionTitleConf, { QuestionTitlePropsType } from './QuestionTitle'
 import QuestionCheckboxConf, {
   QuestionCheckboxPropsType,
   QuestionCheckboxStatPropsType,
 } from './QuestionCheckbox'
 
-/** 统一封装组件的 prop type */
-export type ComponentPropsType = QuestionInputPropsType &
-  QuestionTitlePropsType &
-  QuestionCheckboxPropsType
+import QuestionInfoConf, { QuestionInfoPropsType } from './QuestionInfo'
+import QuestionInputConf, { QuestionInputPropsType } from './QuestionInput'
+
+import QuestionParagraphConf, {
+  QuestionParagraphPropsType,
+} from './QuestionParagraph'
+
+import QuestionRadioConf, {
+  QuestionRadioPropsType,
+  QuestionRadioStatPropsType,
+} from './QuestionRadio'
+
+import QuestionTextareaConf, {
+  QuestionTextareaPropsType,
+} from './QuestionTextarea'
+
+import QuestionTitleConf, { QuestionTitlePropsType } from './QuestionTitle'
+
+/** 统一封装组件的 prop 属性类型 */
+export type ComponentPropsType = QuestionCheckboxPropsType &
+  QuestionInfoPropsType &
+  QuestionInputPropsType &
+  QuestionParagraphPropsType &
+  QuestionRadioPropsType &
+  QuestionTextareaPropsType &
+  QuestionTitlePropsType
 
 /** 统一封装各个组件的统计属性类型 */
-type ComponentStatPropsType = QuestionCheckboxStatPropsType
+type ComponentStatPropsType = QuestionCheckboxStatPropsType &
+  QuestionRadioStatPropsType
 
 /** 统一封装组件配置 type */
 export interface ComponentConfType {
@@ -24,13 +45,6 @@ export interface ComponentConfType {
   StatComponent?: FC<ComponentStatPropsType>
 }
 
-/** 全部组件的配置列表 */
-const componentConfList: ComponentConfType[] = [
-  QuestionInputConf,
-  QuestionTitleConf,
-  QuestionCheckboxConf,
-]
-
 /**
  * 组件分组
  */
@@ -38,18 +52,29 @@ export const componentConfGroup = [
   {
     groupId: 'textGroup',
     groupName: '文本显示',
-    components: [QuestionTitleConf],
+    components: [QuestionInfoConf, QuestionParagraphConf, QuestionTitleConf],
   },
   {
     groupId: 'inputGroup',
     groupName: '用户输入',
-    components: [QuestionInputConf],
+    components: [QuestionInputConf, QuestionTextareaConf],
   },
   {
     groupId: 'chooseGroup',
     groupName: '用户选择',
-    components: [QuestionCheckboxConf],
+    components: [QuestionCheckboxConf, QuestionRadioConf],
   },
+]
+
+/** 全部组件的配置列表 */
+const componentConfList: ComponentConfType[] = [
+  QuestionCheckboxConf,
+  QuestionInfoConf,
+  QuestionInputConf,
+  QuestionParagraphConf,
+  QuestionRadioConf,
+  QuestionTextareaConf,
+  QuestionTitleConf,
 ]
 
 /**

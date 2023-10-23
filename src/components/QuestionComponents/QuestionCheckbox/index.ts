@@ -5,7 +5,10 @@ import { QuestionCheckboxDefaultProps } from './type'
 
 export * from './type'
 
-export default {
+/**
+ * Checkbox 组件的配置
+ */
+const QuestionCheckboxConf = {
   title: '多选',
   type: 'questionCheckbox',
   Component,
@@ -13,3 +16,5 @@ export default {
   StatComponent,
   defaultProps: QuestionCheckboxDefaultProps,
 }
+
+export default QuestionCheckboxConf

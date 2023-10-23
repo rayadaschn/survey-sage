@@ -1,20 +1,17 @@
 import React, { FC } from 'react'
 // import { Link } from 'react-router-dom'
-import { Space, Typography } from 'antd'
+import { Space } from 'antd'
 import { FormOutlined } from '@ant-design/icons'
-import styles from './Logo.module.less'
-
-const { Title } = Typography
 
 const Logo: FC = () => {
   return (
     <div>
       <Link to="/">
-        <Space className={styles.container}>
-          <Title>
+        <Space>
+          <div className="text-7 color-white">
             <FormOutlined />
-          </Title>
-          <Title>问卷调查</Title>
+            <span>问卷调查</span>
+          </div>
         </Space>
       </Link>
     </div>

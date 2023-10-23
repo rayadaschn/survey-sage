@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import { Typography } from 'antd'
 import { QuestionTitleDefaultProps, QuestionTitlePropsType } from './type'
 
@@ -11,7 +11,7 @@ const QuestionTitle: FC<QuestionTitlePropsType> = (
     text = '',
     level = 1,
     isCenter = false,
-  } = { ...QuestionTitleDefaultProps }
+  } = { ...QuestionTitleDefaultProps, ...props }
 
   const getFontSize = (level: number) => {
     if (level === 1) return '24px'
