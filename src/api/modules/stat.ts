@@ -1,6 +1,6 @@
-import axios, { ResDataType } from './ajax'
+import { axios, ResDataType } from '@/utils'
 
-// 获取问卷的统计列表
+/** 获取问卷的统计列表 */
 export async function getQuestionStatListService(
   questionId: string,
   opt: { page: number; pageSize: number },
@@ -10,7 +10,7 @@ export async function getQuestionStatListService(
   return data
 }
 
-// 获取组件统计数据汇总
+/** 获取组件统计数据汇总 */
 export async function getComponentStatService(
   questionId: string,
   componentId: string,

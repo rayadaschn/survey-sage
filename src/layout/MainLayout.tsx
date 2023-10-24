@@ -32,7 +32,7 @@ const MainLayout: FC = () => {
         )}
       </Content>
       <Footer className="border-t border-gray-200 border-solid bg-white text-center">
-        问卷调查@2023 Created by Huy
+        问卷调查 &copy;2023 - present. Created by Huy
       </Footer>
     </Layout>
   )

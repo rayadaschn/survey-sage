@@ -1,13 +1,13 @@
-import axios, { ResDataType } from './ajax'
+import { axios, ResDataType } from '@/utils'
 
-// 获取用户信息
+/** 获取用户信息 */
 export async function getUserInfoService(): Promise<ResDataType> {
   const url = '/api/user/info'
   const data = (await axios.get(url)) as ResDataType
   return data
 }
 
-// 注册用户
+/** 注册用户 */
 export async function registerService(
   username: string,
   password: string,
@@ -19,7 +19,7 @@ export async function registerService(
   return data
 }
 
-// 登录
+/** 登录 */
 export async function loginService(
   username: string,
   password: string,

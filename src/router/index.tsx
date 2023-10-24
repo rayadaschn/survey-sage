@@ -14,6 +14,7 @@ import Stat from '@/pages/question/stat'
 import Home from '@/pages/home'
 import Login from '@/pages/login/Login'
 
+/** 路由对照表 */
 const router = createBrowserRouter(
   [
     {

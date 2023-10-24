@@ -1,4 +1,4 @@
-import axios, { ResDataType } from './ajax'
+import { axios, ResDataType } from '@/utils'
 
 type SearchOption = {
   keyword: string
@@ -40,7 +40,7 @@ export async function updateQuestionService(
   return data
 }
 
-// 复制问卷
+/** 复制问卷 */
 export async function duplicateQuestionService(
   id: string,
 ): Promise<ResDataType> {
@@ -49,7 +49,7 @@ export async function duplicateQuestionService(
   return data
 }
 
-// 批量彻底删除
+/** 批量彻底删除 */
 export async function deleteQuestionsService(
   ids: string[],
 ): Promise<ResDataType> {
