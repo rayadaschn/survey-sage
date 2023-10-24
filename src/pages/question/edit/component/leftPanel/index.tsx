@@ -21,7 +21,7 @@ const EditLeftPanel: FC = () => {
       label: (
         <span>
           <BarsOutlined />
-          组件库
+          图层
         </span>
       ),
       children: <LeftLayers />,
