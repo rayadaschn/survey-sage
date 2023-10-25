@@ -3,8 +3,8 @@ import { FileTextOutlined, SettingOutlined } from '@ant-design/icons'
 import React, { FC } from 'react'
 import RightComponentProp from './RightComponentProp'
 import { Tabs } from 'antd'
+import RightPageSetting from './RightPageSetting'
 
-// TS 枚举
 enum TAB_KEYS {
   PROP_KEY = 'prop',
   SETTING_KEY = 'setting',
@@ -15,8 +15,11 @@ const EditRightPanel: FC = () => {
   const { selectedId } = useGetComponentInfo()
 
   useEffect(() => {
-    if (selectedId) setActiveKey(TAB_KEYS.PROP_KEY)
-    else setActiveKey(TAB_KEYS.SETTING_KEY)
+    if (selectedId) {
+      setActiveKey(TAB_KEYS.PROP_KEY)
+    } else {
+      setActiveKey(TAB_KEYS.SETTING_KEY)
+    }
   }, [selectedId])
 
   const tabsItems = [
@@ -38,7 +41,7 @@ const EditRightPanel: FC = () => {
           页面设置
         </span>
       ),
-      children: <div>页面设置</div>,
+      children: <RightPageSetting />,
     },
   ]
   return <Tabs activeKey={activeKey} items={tabsItems} />

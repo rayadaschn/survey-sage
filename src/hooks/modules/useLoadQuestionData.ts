@@ -1,7 +1,6 @@
 import { useParams } from 'react-router-dom'
 import { getQuestionService } from '@/api'
 import { useDispatch } from 'react-redux'
-import store from '@/store'
 import { resetPageInfo } from '@/store/modules/pageInfoReducer'
 import { resetComponents } from '@/store/modules/componentsReducer'
 

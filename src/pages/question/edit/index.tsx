@@ -4,12 +4,21 @@ import EditHeader from './component/header'
 import EditLeftPanel from './component/leftPanel'
 import EditCenterPanel from './component/centerPanel'
 import EditRightPanel from './component/rightPanel'
+import { useDispatch } from 'react-redux'
+import { changeSelectedId } from '@/store/modules/componentsReducer'
 
 const Edit: FC = () => {
+  const dispatch = useDispatch()
   const { loading } = useLoadQuestionData()
 
   const { title } = useGetPageInfo()
-  useTitle(`问卷编辑 - ${title}`)
+  const pageTitle = title ? `问卷编辑 - ${title}` : '问卷调查'
+  useTitle(pageTitle)
+
+  /** 清空选择 */
+  const clearSelectedId = () => {
+    dispatch(changeSelectedId(''))
+  }
 
   return (
     <div className="h-screen flex flex-col bg-[#f0f2f5]">
@@ -20,7 +29,10 @@ const Edit: FC = () => {
             <EditLeftPanel />
           </div>
 
-          <div className="relative flex-1 overflow-hidden">
+          <div
+            className="relative flex-1 overflow-hidden"
+            onClick={clearSelectedId}
+          >
             <div className="absolute left-1/2 top-1/2 h-178 w-150 transform items-center justify-center overflow-auto shadow-2xl -translate-x-1/2 -translate-y-1/2">
               <EditCenterPanel loading={loading} />
             </div>

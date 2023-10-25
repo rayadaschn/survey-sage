@@ -1,9 +1,12 @@
 import { useGetComponentInfo } from '@/hooks'
 import {
+  changeComponentHidden,
   changeComponentTitle,
   changeSelectedId,
+  toggleComponentLocked,
 } from '@/store/modules/componentsReducer'
-import { Input, message } from 'antd'
+import { EyeInvisibleOutlined, LockOutlined } from '@ant-design/icons'
+import { Button, Input, Space, message } from 'antd'
 import classNames from 'classnames'
 import React, { ChangeEvent, FC } from 'react'
 import { useDispatch } from 'react-redux'
@@ -39,6 +42,16 @@ const LeftLayers: FC = () => {
     dispatch(changeComponentTitle({ fe_id: selectedId, title: newTitle }))
   }
 
+  /** 切换显示/隐藏 */
+  const toggleHidden = (fe_id: string, isHidden: boolean) => {
+    dispatch(changeComponentHidden({ fe_id, isHidden }))
+  }
+
+  /** 切换锁定/解锁 */
+  const toggleLocked = (fe_id: string) => {
+    dispatch(toggleComponentLocked({ fe_id }))
+  }
+
   return (
     <>
       {componentList.map((c) => {
@@ -48,6 +61,13 @@ const LeftLayers: FC = () => {
         const titleClassName = classNames({
           [titleDefaultClassName]: true,
           [selectedClassName]: fe_id === selectedId,
+        })
+        const isShowName = 'opacity-20'
+        const hiddenButtonClassName = classNames({
+          [isShowName]: isHidden,
+        })
+        const clockButtonClassName = classNames({
+          [isShowName]: isHidden,
         })
 
         return (
@@ -69,7 +89,26 @@ const LeftLayers: FC = () => {
               )}
               {fe_id !== changingTitleId && title}
             </div>
-            <div className="w-12 text-end">按钮</div>
+            <div className="w-12 text-end">
+              <Space>
+                <Button
+                  size="small"
+                  shape="circle"
+                  className={hiddenButtonClassName}
+                  icon={<EyeInvisibleOutlined />}
+                  type={isHidden ? 'primary' : 'text'}
+                  onClick={() => toggleHidden(fe_id, !isHidden)}
+                />
+                <Button
+                  size="small"
+                  shape="circle"
+                  className={clockButtonClassName}
+                  icon={<LockOutlined />}
+                  type={isLocked ? 'primary' : 'text'}
+                  onClick={() => toggleLocked(fe_id)}
+                />
+              </Space>
+            </div>
           </div>
         )
       })}
