@@ -2,6 +2,7 @@ import { LeftOutlined } from '@ant-design/icons'
 import { Button, Space } from 'antd'
 import React, { FC } from 'react'
 import HeaderToolbar from './HeaderToolbar'
+import HeaderTitle from './HeaderTitle'
 
 /** 编辑器头部 */
 const EditHeader: FC = () => {
@@ -14,7 +15,9 @@ const EditHeader: FC = () => {
           <Button type="link" icon={<LeftOutlined />} onClick={() => nav(-1)}>
             返回
           </Button>
-          <div className="mb-0 text-[18px] leading-none">标题</div>
+          <div className="mb-0 text-[18px] leading-none">
+            <HeaderTitle />
+          </div>
         </Space>
       </div>
 
