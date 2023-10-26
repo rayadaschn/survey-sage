@@ -3,6 +3,7 @@ import { Button, Space } from 'antd'
 import React, { FC } from 'react'
 import HeaderToolbar from './HeaderToolbar'
 import HeaderTitle from './HeaderTitle'
+import HeaderButton from './HeaderButton'
 
 /** 编辑器头部 */
 const EditHeader: FC = () => {
@@ -26,10 +27,7 @@ const EditHeader: FC = () => {
       </div>
 
       <div className="mr-3 flex-1 text-right leading-[2]">
-        <Space>
-          <Button>保存</Button>
-          <Button type="primary">发布</Button>
-        </Space>
+        <HeaderButton />
       </div>
     </div>
   )
