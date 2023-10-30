@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import produce from 'immer'
 import { nanoid } from 'nanoid'
 import { cloneDeep } from 'lodash-es'
+import { arrayMove } from '@dnd-kit/sortable'
 
 /** 单个组件信息 */
 export interface ComponentInfoType {
@@ -259,7 +260,7 @@ export const componentsSlice = createSlice({
         const { componentList: curComponentList } = draft
         const { oldIndex, newIndex } = action.payload
 
-        // draft.componentList = arrayMove(curComponentList, oldIndex, newIndex)
+        draft.componentList = arrayMove(curComponentList, oldIndex, newIndex)
       },
     ),
   },

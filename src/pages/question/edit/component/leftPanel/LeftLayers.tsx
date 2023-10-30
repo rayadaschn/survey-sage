@@ -1,8 +1,11 @@
+import SortableContainer from '@/components/DragSortable/components/SortableContainer'
+import SortableItem from '@/components/DragSortable/components/SortableItem'
 import { useGetComponentInfo } from '@/hooks'
 import {
   changeComponentHidden,
   changeComponentTitle,
   changeSelectedId,
+  moveComponent,
   toggleComponentLocked,
 } from '@/store/modules/componentsReducer'
 import { EyeInvisibleOutlined, LockOutlined } from '@ant-design/icons'
@@ -52,8 +55,18 @@ const LeftLayers: FC = () => {
     dispatch(toggleComponentLocked({ fe_id }))
   }
 
+  /** 添加拖拽，组件需要 id */
+  const componentListWithId = componentList.map((item) => {
+    return { ...item, id: item.fe_id }
+  })
+
+  /** 拖拽结束 */
+  const onDragEnd = (oldIndex: number, newIndex: number) => {
+    dispatch(moveComponent({ oldIndex, newIndex })) // 更新序列
+  }
+
   return (
-    <>
+    <SortableContainer items={componentListWithId} onDragEnd={onDragEnd}>
       {componentList.map((c) => {
         const { fe_id, title, isHidden, isLocked } = c
         const titleDefaultClassName = 'flex-auto line-height-loose'
@@ -71,48 +84,47 @@ const LeftLayers: FC = () => {
         })
 
         return (
-          <div
-            key={fe_id}
-            className="flex border-b border-b-green-200 border-b-solid py-2"
-          >
-            <div
-              className={titleClassName}
-              onClick={() => handleTitleClick(fe_id)}
-            >
-              {fe_id === changingTitleId && (
-                <Input
-                  value={title}
-                  onChange={changeTitle}
-                  onPressEnter={() => setChangingTitleId('')}
-                  onBlur={() => setChangingTitleId('')}
-                />
-              )}
-              {fe_id !== changingTitleId && title}
+          <SortableItem key={fe_id} id={fe_id}>
+            <div className="flex border-b border-b-green-200 border-b-solid py-2">
+              <div
+                className={titleClassName}
+                onClick={() => handleTitleClick(fe_id)}
+              >
+                {fe_id === changingTitleId && (
+                  <Input
+                    value={title}
+                    onChange={changeTitle}
+                    onPressEnter={() => setChangingTitleId('')}
+                    onBlur={() => setChangingTitleId('')}
+                  />
+                )}
+                {fe_id !== changingTitleId && title}
+              </div>
+              <div className="w-12 text-end">
+                <Space>
+                  <Button
+                    size="small"
+                    shape="circle"
+                    className={hiddenButtonClassName}
+                    icon={<EyeInvisibleOutlined />}
+                    type={isHidden ? 'primary' : 'text'}
+                    onClick={() => toggleHidden(fe_id, !isHidden)}
+                  />
+                  <Button
+                    size="small"
+                    shape="circle"
+                    className={clockButtonClassName}
+                    icon={<LockOutlined />}
+                    type={isLocked ? 'primary' : 'text'}
+                    onClick={() => toggleLocked(fe_id)}
+                  />
+                </Space>
+              </div>
             </div>
-            <div className="w-12 text-end">
-              <Space>
-                <Button
-                  size="small"
-                  shape="circle"
-                  className={hiddenButtonClassName}
-                  icon={<EyeInvisibleOutlined />}
-                  type={isHidden ? 'primary' : 'text'}
-                  onClick={() => toggleHidden(fe_id, !isHidden)}
-                />
-                <Button
-                  size="small"
-                  shape="circle"
-                  className={clockButtonClassName}
-                  icon={<LockOutlined />}
-                  type={isLocked ? 'primary' : 'text'}
-                  onClick={() => toggleLocked(fe_id)}
-                />
-              </Space>
-            </div>
-          </div>
+          </SortableItem>
         )
       })}
-    </>
+    </SortableContainer>
   )
 }
 

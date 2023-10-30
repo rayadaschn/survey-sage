@@ -1,8 +1,11 @@
+import SortableContainer from '@/components/DragSortable/components/SortableContainer'
+import SortableItem from '@/components/DragSortable/components/SortableItem'
 import { getComponentConfByType } from '@/components/QuestionComponents'
 import { useBindKeyPress, useGetComponentInfo } from '@/hooks'
 import {
   ComponentInfoType,
   changeSelectedId,
+  moveComponent,
 } from '@/store/modules/componentsReducer'
 import { Spin } from 'antd'
 import classNames from 'classnames'
@@ -44,26 +47,39 @@ const EditCenterPanel: FC<PropsType> = ({ loading }) => {
     return <Component {...props} />
   }
 
+  /** 添加拖拽，组件需要 id */
+  const componentListWithId = componentList.map((item) => {
+    return { ...item, id: item.fe_id }
+  })
+
+  /** 拖拽结束 */
+  const onDragEnd = (oldIndex: number, newIndex: number) => {
+    dispatch(moveComponent({ oldIndex, newIndex })) // 更新序列
+  }
+
   return (
-    <div className="min-h-[100%] overflow-hidden bg-white">
-      {componentList.map((item) => {
-        const { fe_id } = item
+    <SortableContainer items={componentListWithId} onDragEnd={onDragEnd}>
+      <div className="min-h-[100%] overflow-hidden bg-white">
+        {componentList.map((item) => {
+          const { fe_id } = item
 
-        const wrapperDefaultClassName =
-          'm-3 border border-white rounded-sm border-solid p-3 hover:border-gray-200'
-        const wrapperName = classNames({ [wrapperDefaultClassName]: true })
+          const wrapperDefaultClassName =
+            'm-3 border border-white rounded-sm border-solid p-3 hover:border-gray-200'
+          const wrapperName = classNames({ [wrapperDefaultClassName]: true })
 
-        return (
-          <div
-            key={fe_id}
-            className={wrapperName}
-            onClick={(e) => handleClick(e, fe_id)}
-          >
-            <div className="pointer-events-none">{genComponent(item)}</div>
-          </div>
-        )
-      })}
-    </div>
+          return (
+            <SortableItem key={fe_id} id={fe_id}>
+              <div
+                className={wrapperName}
+                onClick={(e) => handleClick(e, fe_id)}
+              >
+                <div className="pointer-events-none">{genComponent(item)}</div>
+              </div>
+            </SortableItem>
+          )
+        })}
+      </div>
+    </SortableContainer>
   )
 }
 
