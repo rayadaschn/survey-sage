@@ -28,6 +28,9 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
+    "@dnd-kit/core": "^6.0.8",
+    "@dnd-kit/sortable": "^7.0.2",
+    "@dnd-kit/utilities": "^3.2.1",
     "@reduxjs/toolkit": "^1.9.7",
     "ahooks": "^3.7.8",
     "antd": "^5.9.4",
