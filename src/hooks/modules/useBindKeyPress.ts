@@ -56,7 +56,7 @@ export function useBindKeyPress() {
       dispatch(UndoActionCreators.undo())
     },
     {
-      exactMatch: true, // 严格匹配
+      exactMatch: true, // 严格匹配，避免同时按 shift 时
     },
   )
 

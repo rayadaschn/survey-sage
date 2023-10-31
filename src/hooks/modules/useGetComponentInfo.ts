@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 
 export function useGetComponentInfo() {
   const components = useSelector<StateType>(
-    (state) => state.components,
+    (state) => state.components.present, // present 增加了 undo 撤销
   ) as ComponentsStateType
 
   const { componentList = [], selectedId, copiedComponent } = components
