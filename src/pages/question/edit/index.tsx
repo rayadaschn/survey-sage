@@ -1,9 +1,9 @@
 import React, { FC } from 'react'
 import { useLoadQuestionData, useGetPageInfo } from '@/hooks'
-import EditHeader from './component/header'
-import EditLeftPanel from './component/leftPanel'
-import EditCenterPanel from './component/centerPanel'
-import EditRightPanel from './component/rightPanel'
+import EditHeader from './components/header'
+import EditLeftPanel from './components/leftPanel'
+import EditCenterPanel from './components/centerPanel'
+import EditRightPanel from './components/rightPanel'
 import { useDispatch } from 'react-redux'
 import { changeSelectedId } from '@/store/modules/componentsReducer'
 
