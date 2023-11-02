@@ -1,27 +1,22 @@
 import React, { FC } from 'react'
 import { useGetPageInfo, useLoadQuestionData } from '@/hooks'
-import { Spin } from 'antd'
+import StatLoading from './components/StatLoading'
 import StatUnPubulished from './components/StatUnPubulished'
 
 const Stat: FC = () => {
   const { loading, questionData } = useLoadQuestionData()
-  const { isPubulished } = useGetPageInfo()
+  const { title, isPubulished } = useGetPageInfo()
 
-  if (loading) {
-    return (
-      <div className="mt-15 text-center">
-        <Spin />
-      </div>
-    )
-  }
+  // 修改标题
+  useTitle(`问卷调查 - ${title}`)
 
-  if (isPubulished) {
-    return <StatUnPubulished />
-  }
+  if (loading) return <StatLoading />
+
+  if (isPubulished) return <StatUnPubulished />
 
   return (
     <div>
-      <p>Stat 统计调查</p>
+      <p>Stat</p>
       <p>{JSON.stringify(questionData)}</p>
     </div>
   )
