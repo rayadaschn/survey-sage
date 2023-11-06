@@ -1,4 +1,4 @@
-System.register(["./@ant-design/icons-legacy-fccabc0f.js"],(function(e,t){"use strict";var r,a;return{setters:[e=>{r=e.r,a=e.o}],execute:function(){
+System.register(["./@ant-design/icons-legacy-404cf72d.js"],(function(e,t){"use strict";var r,a;return{setters:[e=>{r=e.r,a=e.o}],execute:function(){
 /**
        * @remix-run/router v1.9.0
        *
