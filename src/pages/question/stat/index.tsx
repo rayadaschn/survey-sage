@@ -17,7 +17,7 @@ const Stat: FC = () => {
   return (
     <div className="min-h-screen flex flex-col bg-cyan">
       <StatHeader />
-      <div className="flex-auto py-3">
+      <div className="flex-1 py-3">
         {loading && <StatLoading />}
         {!loading && <StatContainer />}
       </div>
