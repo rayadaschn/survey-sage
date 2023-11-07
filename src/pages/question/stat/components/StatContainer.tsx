@@ -1,7 +1,7 @@
 import { FC } from 'react'
-import StatContainerLeft from './StatContainerLeft'
-import StatContainerCenter from './StatContainerCenter'
-import StatContainerRight from './StatContainerRight'
+import StatContainerLeft from './leftPanel'
+import StatContainerCenter from './centerPanel'
+import StatContainerRight from './rightPanel'
 
 const StatContainer: FC = () => {
   return (

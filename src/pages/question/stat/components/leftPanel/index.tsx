@@ -1,6 +1,8 @@
 import { FC } from 'react'
 import { Tabs } from 'antd'
 import { AppstoreOutlined, BarsOutlined } from '@ant-design/icons'
+import ComponentLib from './ComponentLib'
+import ComponentLayer from './ComponentLayer'
 
 const StatContainerLeft: FC = () => {
   const tabsItems = [
@@ -12,7 +14,7 @@ const StatContainerLeft: FC = () => {
           组件库
         </span>
       ),
-      children: <div>子组件</div>,
+      children: <ComponentLib />,
     },
     {
       key: 'layers',
@@ -22,7 +24,7 @@ const StatContainerLeft: FC = () => {
           图层
         </span>
       ),
-      children: <div>图层</div>,
+      children: <ComponentLayer />,
     },
   ]
 
