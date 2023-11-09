@@ -1,49 +1,52 @@
 import { FC } from 'react'
-import { Tabs } from 'antd'
-import { FileTextOutlined, SettingOutlined } from '@ant-design/icons'
-import { useGetComponentInfo } from '@/hooks'
+import { Typography } from 'antd'
+import { getComponentStatService } from '@/api'
+import { getComponentConfByType } from '@/components/QuestionComponents'
 
-enum TAB_KEYS {
-  PROP_KEY = 'prop',
-  SETTING_KEY = 'setting',
+const { Title } = Typography
+
+interface PropsType {
+  selectedComponentId: string
+  selectedComponentType: string
 }
 
-const StatContainerRight: FC = () => {
-  const [activeKey, setActiveKey] = useState(TAB_KEYS.PROP_KEY)
-  const { selectedId } = useGetComponentInfo()
+const StatContainerRight: FC<PropsType> = (props: PropsType) => {
+  const { selectedComponentId, selectedComponentType } = props
+  const { id = '' } = useParams()
+
+  const [stat, setStat] = useState([])
+  const { run } = useRequest(
+    async (questionId, componentId) =>
+      await getComponentStatService(questionId, componentId),
+    {
+      manual: true,
+      onSuccess(res) {
+        setStat(res.stat)
+      },
+    },
+  )
 
   useEffect(() => {
-    if (selectedId) {
-      setActiveKey(TAB_KEYS.PROP_KEY)
-    } else {
-      setActiveKey(TAB_KEYS.SETTING_KEY)
-    }
-  }, [selectedId])
+    if (selectedComponentId) run(id, selectedComponentId)
+  }, [id, selectedComponentId])
 
-  const tabsItems = [
-    {
-      key: TAB_KEYS.PROP_KEY,
-      label: (
-        <span>
-          <FileTextOutlined />
-          属性
-        </span>
-      ),
-      children: <div>props</div>,
-    },
-    {
-      key: TAB_KEYS.SETTING_KEY,
-      label: (
-        <span>
-          <SettingOutlined />
-          页面设置
-        </span>
-      ),
-      children: <div>PageSetting</div>,
-    },
-  ]
+  // 生成统计图表
+  const genStatElem = () => {
+    if (!selectedComponentId) return <div>暂未选中组件</div>
 
-  return <Tabs activeKey={activeKey} items={tabsItems} />
+    const { StatComponent } =
+      getComponentConfByType(selectedComponentType) || {}
+    if (StatComponent == null) return <div>该组件暂无统计图表</div>
+
+    return <StatComponent stat={stat} />
+  }
+
+  return (
+    <>
+      <Title level={3}>图表统计</Title>
+      <div>{genStatElem()}</div>
+    </>
+  )
 }
 
 export default StatContainerRight
