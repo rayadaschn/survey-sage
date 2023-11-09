@@ -8,12 +8,14 @@ antd 🔥 + 🐣 unocss + 🤺 ahooks 的问卷调查
 「新的尝试」
 
 - 新增功能：提供 Mock 数据，测试数据支持独立部署；
-- 尝试 Vite + autoImport 在 React18 中的使用;
-- 增加快捷键
+- 尝试 Vite + Unocss + autoImport 在 React18 中的使用;
+- 增加快捷键;
+- 增加 Next SSR 服务端渲染;
 
 「目标」
 
 - [x] 首页
 - [x] 登录页
 - [x] 编辑页
-- [ ] 统计页ing
+- [x] 统计页
+- [ ] SSR 服务端渲染 ing
