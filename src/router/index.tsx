@@ -9,10 +9,12 @@ import NotFound from '@/pages/NotFound'
 import List from '@/pages/manage/list'
 import Trash from '@/pages/manage/trash'
 import Star from '@/pages/manage/star'
-import Edit from '@/pages/question/edit'
-import Stat from '@/pages/question/stat'
 import Home from '@/pages/home'
 import Login from '@/pages/login/Login'
+
+// 路由懒加载
+const Edit = lazy(() => import('@/pages/question/edit'))
+const Stat = lazy(() => import('@/pages/question/stat'))
 
 /** 路由对照表 */
 const router = createBrowserRouter(

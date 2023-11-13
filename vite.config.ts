@@ -90,7 +90,7 @@ export default defineConfig(({ mode }) => {
           drop_debugger: true,
         },
       },
-      chunkSizeWarningLimit: 600,
+      chunkSizeWarningLimit: 500,
     },
 
     plugins: [

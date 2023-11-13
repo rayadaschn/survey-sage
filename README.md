@@ -18,4 +18,3 @@ antd 🔥 + 🐣 unocss + 🤺 ahooks 的问卷调查
 - [x] 登录页
 - [x] 编辑页
 - [x] 统计页
-- [ ] SSR 服务端渲染 ing
