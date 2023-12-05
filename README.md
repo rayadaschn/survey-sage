@@ -1,5 +1,10 @@
 # 问卷调查
 
+[![Author: Huy](https://img.shields.io/badge/Author-Huy-yellow)](https://github.com/rayadaschn)
+[![License](https://img.shields.io/badge/LICENSE-CC--BY--SA--4.0-yellow)](https://creativecommons.org/licenses/by-sa/4.0/)
+
+---
+
 基于 🚀 Vite + 😊 React 18 + 😈 Typescript 🤘 &
 antd 🔥 + 🐣 unocss + 🤺 ahooks 的问卷调查
 
