@@ -104,7 +104,6 @@ export default defineConfig(({ mode }) => {
 
       /**
        * 自动导入 API ，不用每次都 import
-       *
        * @tips 如果直接使用没导入的 API 依然提示报错，请重启 VS Code
        */
       autoImport({

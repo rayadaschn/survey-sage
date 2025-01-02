@@ -14,7 +14,7 @@ const List: FC = () => {
   const [page, setPage] = useState(1) // List 内部的数据，不在 url 参数中体现
   const [list, setList] = useState([]) // 全部的列表数据，上划加载更多，累计
   const [total, setTotal] = useState(0)
-  const haveMoreData = total > list.length // 有没有更多的、为加载完成的数据
+  const haveMoreData = total > list.length // 有没有更多的、未加载完成的数据
 
   const [searchParams] = useSearchParams() // url 参数，虽然没有 page pageSize ，但有 keyword
   const keyword = searchParams.get(LIST_SEARCH_PARAM_KEY) || ''
