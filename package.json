@@ -1,12 +1,13 @@
 {
   "name": "survey-sage",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "基于 React18 + Vite + TS 的调查问卷",
   "author": "huy",
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "dev": "vite --mode dev --host",
+    "dev": "npm run dev:prev & npm run dev:mock",
+    "dev:prev": "vite --mode dev --host",
     "dev:test": "vite --mode test --host",
     "dev:prod": "vite --mode prod --host",
     "dev:mock": "cd mock && npm run dev",

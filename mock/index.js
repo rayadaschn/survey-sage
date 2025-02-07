@@ -30,3 +30,5 @@ mockList.forEach((item) => {
 
 app.use(router.routes())
 app.listen(3001) // port 端口
+
+console.info('➜  mock server is running at http://localhost:3001')
